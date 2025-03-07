@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #174e70;
+    color: #fff;
+    padding-top: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.headerText {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding-bottom: 1.5em;
+    align-items: center;
+}
+
+.headerText figcaption {
+    font-family: "Bebas Neue";
+    font-weight: 400;
+    font-size: 3rem;
+}
+
+.headerimage {
+    max-width: 15%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 1);
+    border-radius: 5px;
+}
+
+/* Basic nav styling */
+/*nav-menu*/
+.navigationBar {
+    background: #174e70;
+}
+
+#menu {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.5rem 0.5rem;
+    color: white;
+    font-family: "Roboto Slab";
+}
+
+#menu::before {
+    content: "≡";
+}
+
+.navigation {
+    list-style: none;
+    margin: 0 auto;
+    max-width: 48em;
+}
+
+.navigation li {
+    display: none;
+}
+
+.navigation a {
+    display: block;
+    color: white;
+    font-family: "Roboto Slab";
+    text-decoration: none;
+    text-align: center;
+    padding: 1em;
+    font-weight: 700;
+    transition: 0.5s;
+}
+
+.navigation a:hover {
+    color: black;
+    background-color: white;
+}
+
+.show li {
+    display: block;
+}
+
+#menu.show::before {
+    content: "x";
+}
+
+
+/*Body*/
+main {
+
+    margin: 0 auto;
+    align-items: center;
+
+}
+.mainTitle {
+    padding-top: 0.3em;
+    font-family: "Roboto Slab";
+    color: #174e70;
+    margin-left: 2.5rem;
+}
+
+figure img{
+    width:20%;
+}
+
+.topBox{
+    width: 95%;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+section  {
+    background-color: #fff;
+    border: 1px solid #b2b2b2;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+
+    margin: 0 auto;
+    justify-content: center;
+    margin: 1em;
+}
+
+.certificateBtn{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.certificateBtn button{
+    background-color: black;
+    color: white;
+    border-radius: 0.5em;
+    border: none;
+    width: 100%;
+    padding: 0.5rem;
+    font-weight: 900;
+}
+
+.course ul {
+    margin-left: 1.5em;
+    padding: 1em;
+}
+
+figure {
+    padding: 1em;
+    text-align: center;
+}
+
+.card-header,
+.certificationTitle {
+    background-color: #174e70;
+    color: white;
+    text-align: center;
+    padding: 0.4em;
+    font-weight: bold;
+}
+
+.certificateBtn,
+.coursesBtn {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 1em;
+    gap: 1em;
+    justify-content: center;
+    text-align: center;
+}
+
+.certificateBtn a,
+.coursesBtn a {
+    text-decoration: none;
+    padding: 0.5em 3em;
+}
+
+.courseList {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 10px; 
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.courseList button {
+    background-color: #662F1F;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    flex-grow: 1;
+    width: 95%;
+    margin: 0 auto;
+    justify-content: center;
+    font-weight: 900;
+}
+
+
+/* Footer styling */
+footer {
+    background: #174e70;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+footer img {
+    width:5%
+}
+
+.lastModified {
+    padding: 0.5em 0;
+    color: yellow;
+    font-weight: 700;
+}
