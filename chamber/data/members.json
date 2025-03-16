@@ -1,0 +1,72 @@
+[
+    {
+      "name": "Biggby Coffee",
+      "address": "4744 N Park Crossing Ave, Meridian, ID 83646",
+      "phone": "+12085792369",
+      "website": "https://biggby.com/",
+      "imageurl": "https://www.biggby.com/wp-content/uploads/2021/01/BIGGBYCoffeeLogo_Horizontal_RGB-300x115.jpg",
+      "membership_level": 2,
+      "industry": "Food & Beverage",
+      "description": "A popular coffee shop."
+    },
+    {
+      "name": "Truffles, Etc.",
+      "address": "M126 E Idaho Ave, Meridian, ID 83642",
+      "phone": "+12088878511",
+      "website": "https://www.trufflesetc.org/",
+      "imageurl": "https://static.wixstatic.com/media/89a4cd_47c1c0410f5f48e98aa0d6193586ace3~mv2.png/v1/fill/w_66,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/truffles-logo_edited.png",
+      "membership_level": 2,
+      "industry": "Food & Beverage",
+      "description": "A shop offering handmade chocolates, ice cream, and espresso drinks."
+    },
+    {
+      "name": "Time Zone Toys",
+      "address": "1760 W Cherry Ln Ste 120, Meridian, ID 83642",
+      "phone": "+12088011098",
+      "website": "https://www.timezonetoys.com/index.html",
+      "imageurl": "https://www.timezonetoys.com/uploads/3/4/4/0/34401077/download.jpg",
+      "membership_level": 1,
+      "industry": "Retail",
+      "description": "A local toy store featuring a wide selection of toys, funko pops, action figures and more."
+    },
+    {
+      "name": "The Flower Place",
+      "address": "930 N Main St, Meridian, ID 83642D",
+      "phone": "+12088885552",
+      "website": "https://www.flowerplace.org/",
+      "imageurl": "https://assets.eflorist.com/site/EF-7213/Logo/m8800001-11-0924AA.gif",
+      "membership_level": 1,
+      "industry": "Retail & Services",
+      "description": "A full-service florist providing beautiful floral arrangements for all occasions."
+    },
+    {
+      "name": "Boise Co-Op Market",
+      "address": "2350 North Eagle Road, Meridian, ID 83646",
+      "phone": "+12088092200 ",
+      "website": "https://www.boise.coop/",
+      "imageurl": "https://images.squarespace-cdn.com/content/v1/5fd382ed549e2c0fb2d7b9b0/0a2756b6-db01-4526-af23-61ebcf967990/BCM+-+Logo+-+Square+-+Spinach.png?format=500w",
+      "membership_level": 2,
+      "industry": "Retail & Services",
+      "description": "A market for locally grown produce and meats."
+    },
+    {
+      "name": "Barclay & Hill",
+      "address": "128 E Broadway Ave, Meridian, ID 83642",
+      "phone": "+18887467439",
+      "website": "https://www.barclayandhill.com/",
+      "imageurl": "https://seller-brand-assets-f.squarecdn.com/JNX2WD6FKYD6Y/056e00b994753d2a9342e7a79d63bb3b.jpeg?height=250",
+      "membership_level": 2,
+      "industry": "Personal Care Services",
+      "description": "A professional barber shop and hair stylist."
+    },
+    {
+      "name": "Inspired by Love Hair Salon and Boutique",
+      "address": "124 E Idaho Ave, Meridian, ID 83642",
+      "phone": "+15107557412",
+      "website": "https://inspiredbylovehairsalon.com/",
+      "imageurl": "https://img1.wsimg.com/isteam/ip/fd16d07d-a2fe-41c8-a4dd-77b147d0eeee/IMG_2372.jpeg/:/rs=w:126,h:200,cg:true,m/cr=w:126,h:200/qt=q:95",
+      "membership_level": 3,
+      "industry": "Beauty & Fashion",
+      "description": "A combined hair salon and boutique offering stylish clothing and expert hair services."
+    }
+  ]
