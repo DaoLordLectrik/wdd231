@@ -1,0 +1,441 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-dark: #2C3E50;
+    --secondary-dark: #34495E;
+    --accent-dark: #1A252F;
+    --primary-light: #ECF0F1;
+    --secondary-light: #DFE6E9;
+    --accent-blue: #3498DB;
+    --accent-green: #2ECC71;
+    --accent-red: #E74C3C;
+    --accent-cyan: #1ABC9C;
+}
+
+html, body {
+    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+    background-color: var(--primary-light);
+}
+
+h1 {
+    color: var(--accent-dark);
+    padding: 1rem;
+}
+
+header {
+    background-color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header img {
+    width: 50px;
+    height: auto;
+    border-radius: 5px;  
+    padding: 1rem;
+}
+
+.chamber-title {
+    font-family: "Bebas Neue", Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-light);
+    line-height: 1.4;
+    text-align: left;
+}
+
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navigation {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation a {
+    color: var(--primary-light);
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.navigation a.active {
+    color: var(--primary-light);
+    font-weight: bold;
+}
+
+.navigation a.active::before {
+    content: "🌐 ";
+}
+
+.navigation a:hover {
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+footer {
+    color: var(--primary-light);
+    background: var(--primary-dark);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.coc-contact, .socials, .bq-copyright {
+    flex: 1;
+    text-align: center;
+}
+
+.socials {
+    text-align: center;
+}
+
+.socials img {
+    margin: 0 0.5rem;
+    height: 50px;
+    width: auto;
+}
+
+#members {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 2rem;
+    min-height: 30vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.member-card {
+    width: 400px;
+    max-width: 100%;
+    min-height: 300px;
+    background-color: var(--secondary-light);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.member-card:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.01);
+}
+
+.member-card h2 {
+    color: var(--primary-light);
+    background-color: var(--primary-dark);
+    border-radius: 10px 10px 0 0;
+    padding: 1rem;
+}
+
+.member-card img {
+    margin: 1rem 0;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.member-card p {
+    font-size: 1rem;
+    color: var(--primary-dark);
+    margin: 0.5rem;
+}
+
+#hero-img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 4px solid var(--primary-dark);
+}
+
+.cta-join-button {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.cta-join-button button {
+    background-color: var(--accent-red);
+    color: var(--primary-dark);
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 2px solid var(--primary-dark);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.cta-join-button button:hover {
+    background-color: var(--accent-dark);
+    color: var(--primary-light);
+    transform: scale(1.01);
+}
+
+.events-table {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.event-row {
+    display: contents;
+}
+
+.header .event-name,
+.header .event-date,
+.header .event-location {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.event-name,
+.event-date,
+.event-location {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--accent-blue);
+}
+
+#general-info {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;  
+    margin: 0 auto;
+    padding: 2rem;
+    gap: 1rem;
+    max-width: 1200px;
+    justify-content: center;
+    text-align: center;
+}
+
+#current-events-header, #weather-forecast-header, #current-weather-header {
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+    border-radius: 10px 10px 0px 0px;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+.current-events {
+    background-color: var(--secondary-light);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.current-events:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.01);
+}
+
+.current-events p {
+    font-size: large;
+    color: var(--primary-dark);
+    padding: 1rem 0;
+}
+
+.weather-forecast {
+    background-color: var(--secondary-light);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);  
+}
+
+.weather-forecast:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.01);
+}
+
+.weather-forecast p {
+    font-size: 1rem;
+    color: var(--primary-dark);
+}
+
+.weather-forecast #today, #tomorrow, #day-after {
+    font-size: large;
+    font-weight: bold;
+    color: var(--primary-dark);
+    padding: 1rem 0;
+}
+
+.weather-card {
+    background-color: var(--secondary-light);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);  
+}
+
+.weather-card:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.01);
+}
+
+.weather-card h2 {
+    color: var(--primary-dark);
+    padding-top: 1rem;
+}
+
+.weather-card #description {
+    text-transform: capitalize;
+    color: var(--primary-dark);
+    font-size: 1rem;
+}
+
+.weather-card #temperature {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--primary-dark);
+    padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+    #members {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #general-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 37.5em) {
+    #menu {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-light);
+        padding: 0.5rem 0.75rem;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    #menu::before {
+        content: "≡";
+    }
+
+    #menu.show::before {
+        content: "X";
+    }
+
+    .chamber-title {
+        padding-bottom: 1rem;
+    }
+    
+    .navigation {
+        display: none;
+        list-style: none;
+        background-color: var(--accent-dark);
+        text-align: center;
+        padding: 0;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .navigation.show {
+        display: block;
+    }
+
+    .navigation li {
+        display: block;
+    }
+
+    .navigation a {
+        display: block;
+        padding: 0.5rem 1rem;
+        font-size: large;
+        color: var(--primary-light);
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .navigation a:hover,
+    .navigation a:active {
+        color: var(--accent-blue);
+        font-weight: 800;
+        transform: scale(1.05);
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    header img {
+        width: 40px;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #members {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .member-card {
+        min-height: auto;
+        margin: auto;
+    }
+
+    .member-card img {
+        width: 150px;
+        height: auto;
+    }
+
+    .chamber-title {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .member-card p {
+        font-size: 0.9rem;
+    }
+
+    #general-info {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align:  center;
+    }
+
+    .socials {
+        text-align: left;
+        margin-top: 1rem;
+    }
+
+    .coc-contact {
+        text-align: center;
+    }
+}

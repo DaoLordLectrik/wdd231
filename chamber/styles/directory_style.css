@@ -22,7 +22,7 @@ body {
   background-color: var(--primary-light);
 }
 
-header {
+/* header {
   background-color: var(--primary-dark);
   font-size: xx-large;
   display: flex;
@@ -34,6 +34,35 @@ header {
 header span {
   font-family: "Bebas Neue", Arial, Helvetica, sans-serif;
   color: #fff;
+} */
+
+header {
+  background-color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header img {
+  width: 50px;
+  height: auto;
+  border-radius: 5px;  
+  padding: 1rem;
+}
+
+.chamber-title {
+  font-family: "Bebas Neue", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-light);
+  line-height: 1.4;
+  text-align: left;
 }
 
 #members {
@@ -102,13 +131,25 @@ header span {
       flex: 1;
   }
 
-  .navigation {
+  /* .navigation {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
       background-color: var(--accent-dark);
       color: var(--secondary-light);
       align-items: center;
+  } */
+
+  nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .navigation {
+    list-style: none;
+    display: flex;
+    gap: 20px;
   }
   
   .navigation li {

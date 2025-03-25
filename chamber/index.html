@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chamber Home Page">
+  <meta name="author" content="Fiifi Debrah">
+  <title>Black Star Chamber of Commerce Home Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/index-style.css">
+  <link rel="icon" href="favicon.ico">
+  <meta property="og:title" content="Chamber Directory Page">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://daolordlectrik.github.io/wdd231/images/black-star-square.webp">
+  <meta property="og:url" content="https://daolordlectrik.github.io/wdd231/chamber/index">
+  <script src="scripts/script.js" defer></script>
+  <script src="scripts/navigation.js" defer></script>
+  <script src="scripts/showcase.js" defer></script>
+  <script src="scripts/weather.js" defer></script>
+  <script src="scripts/forecast.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img src="images/logo.png" alt="Chamber Commerce Logo">
+      <span class="chamber-title">
+        Black Star Chamber of Commerce
+      </span>
+    </div>
+    <a id="menu" href="#"></a>
+    <nav aria-label="Main Navigation">
+      <ul class="navigation">
+        <li><a href="index.html" title="Home">Home</a></li>
+        <li><a href="directory.html" title="Directory">Directory</a></li>
+        <li><a href="#" title="Join">Join</a></li>
+        <li><a href="#" target="_blank" title="Discover">Discover</a></li>
+      </ul>
+    </nav> 
+  </header>
+
+  <main>
+    <h1>Home</h1>
+    <img id="hero-img" src="images/hero.webp" alt="Black Star, Accra">
+    <div class="cta-join-button">
+      <button>Learn More</button>
+    </div>
+    <div id="general-info">
+      <section class="current-events">
+        <h2 id="current-events-header">Events</h2>
+        <div class="events-table">
+          <div class="event-row header">
+            <div class="event-name">Event</div>
+            <div class="event-date">Date/Time</div>
+            <div class="event-location">Venue</div>
+          </div>
+          <div class="event-row">
+            <div class="event-name">Green Sale Day</div>
+            <div class="event-date">Fridays, Jan-Mar, 8am - 8pm</div>
+            <div class="event-location">Central Mall</div>
+          </div>
+          <div class="event-row">
+            <div class="event-name">Sparklight Movie Night</div>
+            <div class="event-date">Terrific Tuesday, 7pm</div>
+            <div class="event-location">Adinkra Gardens</div>
+          </div>
+          <div class="event-row">
+            <div class="event-name">High School Musical</div>
+            <div class="event-date">Weekends, 6pm - 10pm</div>
+            <div class="event-location">Sunshine Resort</div>
+          </div>
+        </div>
+      </section>      
+      <div class="weather-card" aria-live="polite">
+        <h2 id="current-weather-header">Current Weather</h2>
+        <h2 id="town">Weather in Accra</h2>
+        <img id="graphic" src="images/default-weather.png" alt="Loading weather graphic">
+        <p id="description">Loading weather...</p>
+        <p id="temperature">--°F</p>
+      </div>
+      <div class="weather-forecast">
+        <h2 id="weather-forecast-header">Weather Forecast</h2>
+        <p id="today">--°F</p>
+        <p id="tomorrow">--°F</p>
+        <p id="day-after">--°F</p>
+      </div>      
+    </div>
+    <div id="members">
+    </div>
+  </main>
+  
+  <footer>
+    <div class="coc-contact">
+      <p class="mcoc-bold">Black Star Chamber of Commerce</p>
+      <p>No 1, Independent Avenue</p>
+      <p>(233) 201 222 444</p>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="images/instagram.png" alt="Idaho Chamber Instagram Logo Link">
+      </a>
+
+      <a href="https://www.youtube.com" target="_blank">
+        <img src="images/youtube.png" alt="Idaho Chamber YouTube Logo Link">
+      </a>
+      <a href="https://www.tiktok.com" target="_blank">
+        <img src="images/tiktok.png" alt="Idaho Chamber TikTok Logo Link">
+      </a>
+    </div>
+    <div id="bq-copyright">
+      <p>&copy; <span id="year"></span> Fiifi Debrah, WDD 231</p>
+      <p id="modification">Last modification: </p>
+    </div>
+  </footer>  
+</body>
+</html>
