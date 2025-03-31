@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chamber Home Page">
+  <meta name="author" content="Fiifi Debrah">
+  <title>Black Star Chamber of Commerce Join Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/join-style.css">
+  <link rel="icon" href="favicon.ico">
+  <meta property="og:title" content="Chamber Join Page">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://daolordlectrik.github.io/wdd231/images/black-star-square.webp">
+  <meta property="og:url" content="https://daolordlectrik.github.io/wdd231/chamber/join">
+  <script src="scripts/script.js" defer></script>
+  <script src="scripts/navigation.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img src="images/logo.png" alt="Chamber Commerce Logo">
+      <span class="chamber-title">
+        Black Star Chamber of Commerce
+      </span>
+    </div>
+    <a id="menu" href="#"></a>
+    <nav aria-label="Main Navigation">
+      <ul class="navigation">
+        <li><a href="index.html" title="Home">Home</a></li>
+        <li><a href="directory.html" title="Directory">Directory</a></li>
+        <li><a href="join.html" title="Join">Join</a></li>
+        <li><a href="#" target="_blank" title="Discover">Discover</a></li>
+      </ul>
+    </nav> 
+  </header>
+
+  <main>
+    <h1>Join</h1>
+    <div class="form-and-cards-wrapper">
+      <div class="form-and-cards">
+        <form method="get" action="thank-you.html" class="join-form">
+          <div class="join-form">
+            <label for="first-name">First Name:</label>
+            <input type="text" name="firstName" id="first-name" required autocomplete="given-name" title="Enter your first name" />
+          </div>
+          <div class="join-form">
+            <label for="last-name">Last Name:</label>
+            <input type="text" name="lastName" id="last-name" required autocomplete="family-name" title="Enter your last name" />
+          </div>
+          <div class="join-form">
+            <label for="organizational-title">Organizational Title:</label>
+            <input type="text" name="organizationalTitle" id="organizational-title" required autocomplete="organization-title" pattern="[A-Za-z\s\-]{7,}" title="Only letters, spaces, and hyphens. Minimum 7 characters." />
+          </div>
+          <div class="join-form">
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" id="email" required autocomplete="email" placeholder="example@email.com" title="Enter a valid email address" />
+          </div>
+          <div class="join-form">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" name="phone" id="phone" required autocomplete="tel" placeholder="123-456-7890" title="Enter your phone number" />
+          </div>
+          <div class="join-form">
+            <label for="business-name">Business Name:</label>
+            <input type="text" name="businessName" id="business-name" required autocomplete="organization" title="Enter the name of your business or organization" />
+          </div>
+          <div class="join-form">
+            <label for="membership">Membership Level:</label>
+            <select name="membership" id="membership" required title="Choose your membership level">
+              <option value="">-Choose Level-</option>
+              <option value="np">Non-Profit Membership</option>
+              <option value="bronze">Bronze Membership</option>
+              <option value="silver">Silver Membership</option>
+              <option value="gold">Gold Membership</option>
+            </select>
+          </div>
+          <div class="join-form">
+            <label for="description">Business Description:</label>
+            <textarea name="description" id="description" rows="4" required title="Describe your business or organization"></textarea>
+          </div>
+          <input type="hidden" name="timestamp" id="timestamp" />
+          <div class="join-form">
+            <input type="submit" value="Apply for Membership" />
+          </div>
+        </form>
+  
+        <div id="membershipCards" class="cards-container">
+          <div class="card">
+            <h2>Non-Profit Membership</h2>
+            <button data-modal="modal-np">Learn More</button>
+          </div>
+          <div class="card">
+            <h2>Bronze Membership</h2>
+            <button data-modal="modal-bronze">Learn More</button>
+          </div>
+          <div class="card">
+            <h2>Silver Membership</h2>
+            <button data-modal="modal-silver">Learn More</button>
+          </div>
+          <div class="card">
+            <h2>Gold Membership</h2>
+            <button data-modal="modal-gold">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <dialog id="modal-bronze" aria-labelledby="modal-bronze-title">
+      <h2 id="modal-bronze-title">Bronze Membership</h2>
+      <p>Basic listing and access to public events.</p>
+      <button class="close-modal" type="button">Close</button>
+    </dialog>
+  
+    <dialog id="modal-silver" aria-labelledby="modal-silver-title">
+      <h2 id="modal-silver-title">Silver Membership</h2>
+      <p>Event access, newsletter features, and more visibility.</p>
+      <button class="close-modal" type="button">Close</button>
+    </dialog>
+  
+    <dialog id="modal-gold" aria-labelledby="modal-gold-title">
+      <h2 id="modal-gold-title">Gold Membership</h2>
+      <p>Top-tier exposure, homepage spotlight, and premium benefits.</p>
+      <button class="close-modal" type="button">Close</button>
+    </dialog>
+  
+    <dialog id="modal-np" aria-labelledby="modal-np-title">
+      <h2 id="modal-np-title">Non-Profit Membership</h2>
+      <p>No fee. Includes community event access and listings.</p>
+      <button class="close-modal" type="button">Close</button>
+    </dialog>
+  </main>
+  
+  <footer>
+    <div class="coc-contact">
+      <p class="mcoc-bold">Black Star Chamber of Commerce</p>
+      <p>No 1, Independent Avenue</p>
+      <p>(233) 201 222 444</p>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="images/instagram.png" alt="Idaho Chamber Instagram Logo Link">
+      </a>
+
+      <a href="https://www.youtube.com" target="_blank">
+        <img src="images/youtube.png" alt="Idaho Chamber YouTube Logo Link">
+      </a>
+      <a href="https://www.tiktok.com" target="_blank">
+        <img src="images/tiktok.png" alt="Idaho Chamber TikTok Logo Link">
+      </a>
+    </div>
+    <div id="bq-copyright">
+      <p>&copy; <span id="year"></span> Fiifi Debrah, WDD 231</p>
+      <p id="modification">Last modification: </p>
+    </div>
+  </footer>  
+</body>
+</html>

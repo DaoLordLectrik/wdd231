@@ -5,22 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Chamber Home Page">
   <meta name="author" content="Fiifi Debrah">
-  <title>Black Star Chamber of Commerce Home Page</title>
+  <title>Black Star Chamber of Commerce Join Page</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/normalize.css">
-  <link rel="stylesheet" href="styles/index-style.css">
+  <link rel="stylesheet" href="styles/join-style.css">
   <link rel="icon" href="favicon.ico">
-  <meta property="og:title" content="Chamber Directory Page">
+  <meta property="og:title" content="Chamber Thank you Page">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://daolordlectrik.github.io/wdd231/images/black-star-square.webp">
-  <meta property="og:url" content="https://daolordlectrik.github.io/wdd231/chamber/index">
+  <meta property="og:url" content="https://daolordlectrik.github.io/wdd231/chamber/join">
   <script src="scripts/script.js" defer></script>
   <script src="scripts/navigation.js" defer></script>
-  <script src="scripts/showcase.js" defer></script>
-  <script src="scripts/weather.js" defer></script>
-  <script src="scripts/forecast.js" defer></script>
+  <script src="scripts/thanks.js" defer></script>
 </head>
 <body>
   <header>
@@ -42,55 +40,12 @@
   </header>
 
   <main>
-    <h1>Home</h1>
-    <img id="hero-img" src="images/hero.webp" alt="Black Star, Accra">
-    <div class="cta-join-button">
-      <button>Learn More</button>
+    <h1>Thank You</h1>
+    <div id="main-content">
+      <div id="results"></div>
     </div>
-    <div id="general-info">
-      <section class="current-events">
-        <h2 id="current-events-header">Events</h2>
-        <div class="events-table">
-          <div class="event-row header">
-            <div class="event-name">Event</div>
-            <div class="event-date">Date/Time</div>
-            <div class="event-location">Venue</div>
-          </div>
-          <div class="event-row">
-            <div class="event-name">Green Sale Day</div>
-            <div class="event-date">Fridays, Jan-Mar, 8am - 8pm</div>
-            <div class="event-location">Central Mall</div>
-          </div>
-          <div class="event-row">
-            <div class="event-name">Sparklight Movie Night</div>
-            <div class="event-date">Terrific Tuesday, 7pm</div>
-            <div class="event-location">Adinkra Gardens</div>
-          </div>
-          <div class="event-row">
-            <div class="event-name">High School Musical</div>
-            <div class="event-date">Weekends, 6pm - 10pm</div>
-            <div class="event-location">Sunshine Resort</div>
-          </div>
-        </div>
-      </section>      
-      <div class="weather-card" aria-live="polite">
-        <h2 id="current-weather-header">Current Weather</h2>
-        <h2 id="town">Weather in Accra</h2>
-        <img id="graphic" src="images/default-weather.png" alt="Loading weather graphic">
-        <p id="description">Loading weather...</p>
-        <p id="temperature">--°F</p>
-      </div>
-      <div class="weather-forecast">
-        <h2 id="weather-forecast-header">Weather Forecast</h2>
-        <p id="today">--°F</p>
-        <p id="tomorrow">--°F</p>
-        <p id="day-after">--°F</p>
-      </div>      
-    </div>
-    <div id="members">
-    </div>
-  </main>
-  
+  </main>  
+
   <footer>
     <div class="coc-contact">
       <p class="mcoc-bold">Black Star Chamber of Commerce</p>
