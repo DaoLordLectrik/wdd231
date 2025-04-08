@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PokeSquad Builder - Build balanced Pokémon teams for competitive battles">
+    <meta name="author" content="PokeSquad Builder">
+    <title>PokeSquad Builder | Home</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/mobile.css" media="(max-width: 768px)">
+    <link rel="icon" href="images/favicon.ico">
+    <script src="scripts/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>PokeSquad Builder</h1>
+    </header>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="images/logo.webp" alt="PokeSquad Logo" class="logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="pokedex.html">Pokédex</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <img src="images/menu-icon.png" alt="Menu">
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Build Your Ultimate Pokémon Team</h2>
+                <p>Create balanced teams for competitive battles with real-time stats and type analysis</p>
+                <div class="hero-buttons">
+                    <a href="team-builder.html" class="btn btn-primary">Start Building</a>
+                    <a href="pokedex.html" class="btn btn-secondary">Explore Pokédex</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/Pikachu.webp" alt="Pikachu" class="floating">
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Why Use PokeSquad Builder?</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <img src="images/normal-gem.webp" alt="Balance Icon" class="feature-icon">
+                    <h3>Team Balance</h3>
+                    <p>Get instant feedback on team weaknesses and strengths</p>
+                </div>
+                <div class="feature-card">
+                    <img src="images/data-card.webp" alt="Stats Icon" class="feature-icon">
+                    <h3>Real-Time Data</h3>
+                    <p>Access up-to-date Pokémon stats, moves, and type information</p>
+                </div>
+                <div class="feature-card">
+                    <img src="images/link-cable.webp" alt="Share Icon" class="feature-icon">
+                    <h3>Share Teams</h3>
+                    <p>Save and share your teams with friends and the community</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-build">
+            <h2>Quick Team Builder</h2>
+            <p>Start with your favorite Pokémon:</p>
+            <div class="quick-search">
+                <input type="text" id="pokemonSearch" placeholder="Enter a Pokémon name...">
+                <button id="searchButton" class="btn btn-primary">Search</button>
+            </div>
+            <div id="searchResults" class="search-results"></div>
+
+            <div class="current-team">
+                <h3>Your Current Team</h3>
+                <div id="teamContainer" class="team-container">
+                    <div class="team-slot empty" data-position="0"><span>+</span></div>
+                    <div class="team-slot empty" data-position="1"><span>+</span></div>
+                    <div class="team-slot empty" data-position="2"><span>+</span></div>
+                    <div class="team-slot empty" data-position="3"><span>+</span></div>
+                    <div class="team-slot empty" data-position="4"><span>+</span></div>
+                    <div class="team-slot empty" data-position="5"><span>+</span></div>
+                </div>
+                <div class="team-actions">
+                    <button id="clearTeam" class="btn btn-secondary">Clear Team</button>
+                    <button id="analyzeTeam" class="btn btn-primary">Analyze Team</button>
+                </div>
+            </div>
+
+            <div id="teamAnalysis" class="team-analysis hidden">
+                <h3>Team Analysis</h3>
+                <div class="type-coverage">
+                    <h4>Type Coverage</h4>
+                    <div id="typeCoverageChart" class="type-chart"></div>
+                </div>
+                <div class="team-weaknesses">
+                    <h4>Team Weaknesses</h4>
+                    <div id="weaknessChart" class="weakness-chart"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="templates">
+            <h2>Popular Team Templates</h2>
+            <div class="template-cards">
+                <div class="template-card">
+                    <h3>Balanced Story Team</h3>
+                    <p>Perfect for casual gameplay</p>
+                    <div class="template-preview">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/6.png" alt="Charizard">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/9.png" alt="Blastoise">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/31.png" alt="Nidoqueen">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/59.png" alt="Arcanine">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/65.png" alt="Alakazam">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/143.png" alt="Snorlax">
+                    </div>
+                    <button class="btn btn-secondary template-load" data-template="story">Load Template</button>
+                </div>
+                <div class="template-card">
+                    <h3>Weather Team</h3>
+                    <p>Focused on rain abilities</p>
+                    <div class="template-preview">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/186.png" alt="Politoed">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/134.png" alt="Vaporeon">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/121.png" alt="Starmie">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/130.png" alt="Gyarados">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/103.png" alt="Exeggutor">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/small/141.png" alt="Kabutops">
+                    </div>
+                    <button class="btn btn-secondary template-load" data-template="rain">Load Template</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="year"></span> PokeSquad Builder Site Plan | Fiifi Debrah, WDD 231</p>
+        <p id="modification">Last Updated: <span id="lastModified"></span></p>
+    </footer>
+</body>
+</html>

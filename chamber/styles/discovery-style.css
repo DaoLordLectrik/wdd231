@@ -1,0 +1,351 @@
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --primary-dark: #2C3E50;
+    --secondary-dark: #34495E;
+    --accent-dark: #1A252F;
+    --primary-light: #ECF0F1;
+    --secondary-light: #DFE6E9;
+    --accent-blue: #3498DB;
+    --accent-green: #2ECC71;
+    --accent-red: #E74C3C;
+    --accent-cyan: #1ABC9C;
+  }
+
+  body {
+    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+    background-color: var(--primary-light);
+  }
+
+/* main {
+    flex: 1;
+  } */
+  
+  header {
+    background-color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  header img {
+    width: 50px;
+    height: auto;
+    border-radius: 5px;  
+    padding: 1rem;
+  }
+
+  .chamber-title {
+    font-family: "Bebas Neue", Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-light);
+    line-height: 1.4;
+    text-align: left;
+}
+
+  main#main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+  
+  h1 {
+    color: var(--olive);
+    padding: 1rem;
+  }
+  
+  nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .navigation {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navigation li {
+      flex: 1 1 auto;
+  }
+  
+  .navigation a {
+      display: block;
+      color: #fff;
+      padding: 1rem;
+      text-decoration: none;
+      text-align: center;
+  }
+  
+  .navigation a:hover {
+      font-weight: 700;
+      color: var(--accent-blue);
+      transform: scale(1.1);
+  }
+
+  .active::before {
+      content: "📍";
+  }
+
+  main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin: 1rem;
+      border-radius: 10px;
+  }
+  
+  main h1 {
+      color: var(--accent-dark);
+      padding: 0.5rem 0;
+  }
+  
+  main h2 {
+      padding: 1rem;
+      text-align: center;
+      background-color: var(--secondary-dark);
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+  }
+
+  footer {
+    color: #fff;
+    background: var(--primary-dark);
+    padding: 1rem;
+    text-align: center;
+  }
+
+  #attraction-cards {
+    box-sizing: border-box;
+    margin: 2rem;
+    min-height: 1600px;
+  }
+  
+  .sight-card {
+    margin: 1rem 8px;
+    padding: 1rem;
+    background-color: var(--mint-cream);
+    border: 1px solid var(--feldgrau);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden;
+    display: grid;
+    grid-template-areas: 
+    "photograph"
+    "name"
+    "location"
+    "description"
+    "button";  
+  }
+  
+  .sight-card h2 {
+    font-size: 1.25rem;
+    color: var(--dark-slate-gray);
+    margin: 0.25rem 0;
+    padding-bottom: 0.5rem;
+    font-weight: bold;
+    grid-area: name;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .sight-card figure {
+    margin: 0;
+  }
+  
+  .sight-card img {
+    width: 300px;
+    height: 200px;
+    border-radius: 5px;
+    grid-area: photograph;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .sight-card address {
+    color: var(--olive);
+    margin: 1rem 0;
+    grid-area: location;
+  }
+  
+  .sight-card p {
+    font-size: 1rem;
+    color: var(--dark-slate-gray);
+    margin: 0.5rem 0;
+    grid-area: description;
+    padding: 0 2rem;
+    text-align: start;
+    align-items: start;
+  }
+  
+  .sight-card button {
+    background-color: var(--olive);
+    color: var(--mint-cream);
+    padding: 0.75rem 1.5rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    grid-area: button;
+  }
+  
+  .sight-card button:hover {
+    background-color: var(--feldgrau);
+  }
+  
+  dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    border: none;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    background: #fff;
+    z-index: 1000;
+    align-items: center;
+    text-align: center;
+  }
+  
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  dialog h2 {
+    margin-bottom: 1rem;
+    color: var(--olive);
+    font-size: 1.5rem;
+  }
+  
+  dialog p {
+    font-size: 1rem;
+    color: var(--dark-slate-gray);
+    line-height: 1.6;
+  }
+  
+  dialog button.close-modal {
+    margin-top: 1.5rem;
+    background-color: var(--olive);
+    color: var(--mint-cream);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  dialog button.close-modal:hover {
+    background-color: var(--feldgrau);
+  }
+  
+  dialog a {
+    color: var(--olive);
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    word-break: break-word;
+  }
+  
+  dialog a:hover {
+    color: var(--feldgrau);
+  }
+  
+  .visit-message {
+    background-color: var(--lblue);
+    color: var(--dark-green);
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem auto;
+    width: auto;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  #timestamp {
+    margin: 1rem auto;
+    padding: 1rem;
+    display: block;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  /* LARGE */
+  @media only screen and (min-width: 64rem) {
+      #attraction-cards {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+      }
+  
+      .sight-card img {
+          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      
+      .sight-card img:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }  
+  }
+  
+  /* MEDIUM */
+  @media only screen and (min-width: 38rem) {
+      .sight-card {
+          grid-template-areas:
+          "name name"
+          "photograph description"
+          "photograph location"
+          "photograph button";
+      }
+  
+      .sight-card img {
+          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      
+      .sight-card img:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+  }
+  
+  @media screen and (max-width: 37.5em) {
+    .visit-message {
+      margin: 1rem;
+    }  
+    
+    #timestamp {
+      width: 100%;
+      max-width: 255px;
+    }
+  
+    .sight-card p {
+      padding: 0.5rem;
+    }
+  }

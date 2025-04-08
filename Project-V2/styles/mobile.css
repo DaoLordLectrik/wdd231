@@ -1,0 +1,128 @@
+/* Mobile Styles */
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        flex-direction: column;
+        background-color: var(--dark-blue);
+        width: 100%;
+        padding: 1rem 0;
+        transition: left 0.3s ease;
+        z-index: 99;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links a {
+        padding: 1rem 2rem;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-toggle img {
+        width: 30px;
+        height: 30px;
+        filter: invert(1);
+    }
+
+    /* Logo */
+    .logo {
+        height: 40px;
+    }
+
+    /* Hero */
+    .hero {
+        flex-direction: column;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .hero-content {
+        margin-bottom: 2rem;
+    }
+
+    .hero-content p {
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    /* Feature Cards */
+    .feature-cards {
+        grid-template-columns: 1fr;
+    }
+
+    /* Team Container */
+    .team-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Pokedex Search */
+    .pokedex-search {
+        flex-direction: column;
+    }
+
+    .filter-group {
+        flex-direction: column;
+    }
+
+    /* Pokemon Grid */
+    .pokemon-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+
+    /* Pokemon Details */
+    .pokemon-details {
+        flex-direction: column;
+    }
+
+    .pokemon-detail-image {
+        margin: 0 auto;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+        margin: 10% auto;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+    .team-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pokemon-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.3rem;
+    }
+}

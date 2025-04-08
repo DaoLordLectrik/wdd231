@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PokeSquad Builder Pokédex - Explore all Pokémon data for team building">
+    <meta name="author" content="PokeSquad Builder">
+    <title>PokeSquad Builder | Pokédex</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/mobile.css" media="(max-width: 768px)">
+    <link rel="icon" href="images/pokeball-favicon.png">
+    <script src="scripts/pokedex.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>PokeSquad Builder</h1>
+    </header>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="PokeSquad Logo" class="logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="pokedex.html" class="active">Pokédex</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <img src="images/menu-icon.png" alt="Menu">
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="pokedex-header">
+            <h2>Pokédex</h2>
+            <p>Explore the complete Pokémon database to build your perfect team</p>
+            <div class="pokedex-search">
+                <input type="text" id="pokedexSearch" placeholder="Search by name or number...">
+                <div class="filter-group">
+                    <select id="typeFilter">
+                        <option value="">All Types</option>
+                        <option value="normal">Normal</option>
+                        <option value="fire">Fire</option>
+                        <option value="water">Water</option>
+                        <option value="electric">Electric</option>
+                        <option value="grass">Grass</option>
+                        <option value="ice">Ice</option>
+                        <option value="fighting">Fighting</option>
+                        <option value="poison">Poison</option>
+                        <option value="ground">Ground</option>
+                        <option value="flying">Flying</option>
+                        <option value="psychic">Psychic</option>
+                        <option value="bug">Bug</option>
+                        <option value="rock">Rock</option>
+                        <option value="ghost">Ghost</option>
+                        <option value="dragon">Dragon</option>
+                        <option value="dark">Dark</option>
+                        <option value="steel">Steel</option>
+                        <option value="fairy">Fairy</option>
+                    </select>
+                    <select id="generationFilter">
+                        <option value="">All Generations</option>
+                        <option value="1">Gen 1</option>
+                        <option value="2">Gen 2</option>
+                        <option value="3">Gen 3</option>
+                        <option value="4">Gen 4</option>
+                        <option value="5">Gen 5</option>
+                        <option value="6">Gen 6</option>
+                        <option value="7">Gen 7</option>
+                        <option value="8">Gen 8</option>
+                        <option value="9">Gen 9</option>
+                    </select>
+                </div>
+                <button id="searchPokedex" class="btn btn-primary">Search</button>
+            </div>
+        </section>
+
+        <section class="pokedex-results">
+            <div class="pokedex-controls">
+                <div class="pagination">
+                    <button id="prevPage" class="btn btn-secondary">Previous</button>
+                    <span id="pageInfo">Page 1</span>
+                    <button id="nextPage" class="btn btn-secondary">Next</button>
+                </div>
+                <select id="viewMode">
+                    <option value="grid">Grid View</option>
+                    <option value="list">List View</option>
+                </select>
+            </div>
+
+            <div id="pokemonList" class="pokemon-grid"></div>
+            
+            <div id="loadingIndicator" class="loading">
+                <img src="images/poke-ball.webp" alt="Loading..." class="spinning">
+                <p>Loading Pokémon data...</p>
+            </div>
+        </section>
+
+        <div id="pokemonModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="modalContent" class="pokemon-details">
+                    <!-- Pokemon details will be loaded here -->
+                </div>
+                <div class="modal-actions">
+                    <button id="addToTeam" class="btn btn-primary">Add to Team</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© <span id="year"></span> PokeSquad Builder Site Plan | Fiifi Debrah, WDD 231</p>
+        <p id="modification">Last Updated: <span id="lastModified"></span></p>
+    </footer>
+</body>
+</html>

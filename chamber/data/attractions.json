@@ -1,0 +1,79 @@
+    [
+      {
+      "name": "Labadi Beach (La Pleasure Beach)",
+      "address": "Labadi, Accra (Near La Palm Royal Beach Hotel)",
+      "cost": "₵20–₵50 entry (weekends may cost more)",
+      "description": "One of Accra’s most popular beaches, known for its lively atmosphere, horseback riding, beach bars, and live music on weekends. Great for swimming and relaxing.",
+      "photo_url": "labadi.webp"
+    },
+    {
+      "name": "Skybar 25 (Rooftop Bar)",
+      "address": "African Regent Hotel, 237-238 Airport West, Accra",
+      "cost": "Cocktails from ₵80–₵150, entry sometimes free (VIP sections may charge)",
+      "description": "A luxurious rooftop bar with panoramic views of Accra, perfect for sunset cocktails, live DJs, and a classy night out.",
+      "photo_url": "skybar.webp"
+    },
+    {
+      "name": "Jamestown (Historic District & Lighthouse)",
+      "address": "Jamestown, Accra (Near Ussher Fort)",
+      "cost": "₵10–₵20 for lighthouse entry",
+      "description": "A historic fishing community with colonial-era buildings, street art, and the iconic Jamestown Lighthouse (great for photos).",
+      "photo_url": "jamestown.webp"
+    },
+    {
+      "name": "Oxford Street, Osu (Shopping & Nightlife Hub)",
+      "address": "Osu, Accra (Stretches from Koala to Burger & Relish)",
+      "cost": "Free to explore (meals/drinks from ₵50–₵200)",
+      "description": "The heart of Accra’s entertainment, packed with restaurants (like Buka), bars, clubs, and fashion boutiques.",
+      "photo_url": "oxfordstreet.webp"
+    },
+    {
+      "name": "Kwame Nkrumah Mausoleum",
+      "address": "High St., Accra (Near Independence Square)",
+      "cost": "₵20 for Ghanaians, ₵50 for foreigners",
+      "description": "A memorial park dedicated to Ghana’s first president, featuring a museum, statues, and beautiful gardens.",
+      "photo_url": "Kwame-Nkrumah-Memorial-Park-Maus.webp"
+    },
+    {
+      "name": "Bojo Beach (Private Beach Resort)",
+      "address": "Near Densu Delta, Weija (30 mins from Accra)",
+      "cost": "₵50–₵100 entry (includes boat ride)",
+      "description": "A clean, private beach with white sand, palm trees, and a relaxed vibe—great for families and picnics.",
+      "photo_url": "https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6"
+    },
+    {
+      "name": "Republic Bar & Grill (Live Music & Drinks)",
+      "address": "Osu, Accra (Behind Papaye, near Oxford St.)",
+      "cost": "Drinks from ₵40, meals ₵60–₵150",
+      "description": "A trendy bar with Afrobeat music, creative cocktails, and a vibrant crowd—especially lively on weekends.",
+      "photo_url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b"
+    },
+    {
+      "name": "Aburi Botanical Gardens",
+      "address": "Aburi, Eastern Region (1-hour drive from Accra)",
+      "cost": "₵10 entry",
+      "description": "A serene mountain garden with exotic plants, picnic spots, and cool breezes—perfect for nature lovers.",
+      "photo_url": "https://images.unsplash.com/photo-1470114716159-e389f8712fda"
+    },
+    {
+      "name": "The Arts Centre (Crafts Market)",
+      "address": "28th February Rd, Accra (Near Kwame Nkrumah Circle)",
+      "cost": "Free entry (bargain for souvenirs)",
+      "description": "The best place to buy Ghanaian crafts, kente cloth, beads, and wood carvings at negotiable prices.",
+      "photo_url": "https://images.unsplash.com/photo-1605000797499-95a51c5269ae"
+    },
+    {
+      "name": "Achimota Forest Reserve",
+      "address": "Achimota, Accra (Near Achimota School)",
+      "cost": "₵5–₵10 entry",
+      "description": "A peaceful forest reserve with walking trails, birdwatching, and a break from city noise.",
+      "photo_url": "https://images.unsplash.com/photo-1448375240586-882707db888b"
+    },
+    {
+      "name": "Kokrobite Beach (Drumming & Reggae Vibes)",
+      "address": "Kokrobite (35 mins from Accra)",
+      "cost": "₵20–₵50 entry",
+      "description": "Home to Big Milly’s Shack, a famous spot for drumming, bonfires, and reggae music on weekends.",
+      "photo_url": "https://images.unsplash.com/photo-1506929562872-bb421503ef21"
+    }
+  ]

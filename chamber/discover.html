@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chamber Directory Page">
+  <meta name="author" content="Fiifi Debrah">
+  <title>Chamber Directory Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/discovery-style.css">
+  <link rel="icon" href="favicon.ico">
+  <meta property="og:title" content="Chamber of Commerce - Directory">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://daolordlectrik.github.io/wdd231/chamber/images/black-star-square.webp">
+  <meta property="og:url" content="https://daolordlectrik.github.io/wdd231/chamber">
+  <script src="scripts/script.js" defer></script>
+  <script src="scripts/discover.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img src="images/logo.png" alt="Idaho Chamber Logo">
+      <span class="chamber-title">
+        Black Star Chamber of Commerce
+      </span>
+    </div>
+    <a id="menu" href="#"></a>
+    <nav>
+      <ul class="navigation">
+        <li><a href="index.html" title="Home">Home</a></li>
+        <li><a href="directory.html" title="Directory">Directory</a></li>
+        <li><a href="join.html" title="Join">Join</a></li>
+        <li><a href="#" title="Discover">Discover</a></li>
+      </ul>
+    </nav> 
+  </header>
+  <main>
+    <h1>Discover</h1>
+    <input type="text" id="timestamp" name="timestamp" aria-hidden="true" hidden>
+    <div id="attraction-cards" class="attraction-cards-container">
+    </div>
+
+    <dialog id="modal-the-village">
+      <h2>The Village</h2>
+      <p>The central fountain at The Village was custom-built by the same company that designed the fountains at the Bellagio in Las Vegas!</p>
+      <p>Visit Website:
+        <a href="https://www.thevillageatmeridian.com/" target="_blank">thevillageatmeridian.com</a>
+      </p>
+      <button class="close-modal">Close</button>
+    </dialog>
+    
+    <dialog id="modal-roaring-springs">
+      <h2>Roaring Springs</h2>
+      <p>Roaring Springs is the largest waterpark in the entire Northwest and has been ranked among the top 10 waterparks in the U.S. by TripAdvisor!</p>
+      <p>Visit Website:
+        <a href="https://roaringsprings.com" target="_blank">roaringsprings.com</a>
+      </p>
+      <button class="close-modal">Close</button>
+    </dialog>
+    
+    <dialog id="modal-meridian-speedway">
+      <h2>Meridian Speedway</h2>
+      <p>This historic speedway opened in 1951 and was once featured in the movie Wiener Dog Nationals, a kids' film about dog racing.</p>
+      <p>Visit Website:
+        <a href="https://www.meridianspeedway.com/" target="_blank">meridianspeedway.com</a>
+      </p>
+      <button class="close-modal">Close</button>
+    </dialog>
+    
+    <dialog id="modal-julius-kleiner-park">
+      <h2>Julius Kleiner Park</h2>
+      <p>The park was donated by Julius M. Kleiner, a German immigrant and successful Idaho farmer, who wanted to give back to the community that supported his family.</p>
+      <p>Visit Website:
+        <a href="https://meridiancity.org/parks/current-parks/julius-m-kleiner-memorial-park/" target="_blank">julius-kleiner-park</a>
+      </p>
+      <button class="close-modal">Close</button>
+    </dialog>
+    
+    <dialog id="modal-wahooz-fun-zone">
+      <h2>Wahooz Fun Zone</h2>
+      <p>Wahooz sits right next to Roaring Springs and was originally called Boondocks before being bought and renamed by the same owners.</p>
+      <p>Visit Website:
+        <a href="https://www.wahoozfunzone.com/" target="_blank">wahoozfunzone.com</a>
+      </p>
+      <button class="close-modal">Close</button>
+    </dialog>
+    
+    <dialog id="modal-the-initial-point">
+      <h2>The Initial Point</h2>
+      <p>The History Center’s building inside City Hall houses artifacts dating back to Meridian’s founding in 1893, including original dairy equipment, since Meridian was once a major milk hub.</p>
+      <p>Visit Website:
+        <a href="https://clui.org/ludb/site/boise-meridian-initial-point" target="_blank">initial-point</a>
+      </p>
+      <button class="close-modal">Close</button>
+    </dialog>
+    
+    <dialog id="modal-meridian-history-center">
+      <h2>Meridian History Center</h2>
+      <p>The History Center’s building inside City Hall houses artifacts dating back to Meridian’s founding in 1893, including original dairy equipment, since Meridian was once a major milk hub.</p>
+      <p>Visit Website:
+        <a href="https://www.mld.org/resources/history" target="_blank">meridian-history-center</a>
+      </p>
+      <button class="close-modal">Close</button>
+    </dialog>
+    
+    <dialog id="modal-eagle-island-park">
+      <h2>Eagle Island Park</h2>
+      <p>Before it became a park, Eagle Island was used as a minimum-security prison farm, and inmates once grew crops and tended livestock.</p>
+      <p>Visit Website:
+        <a href="https://visitidaho.org/things-to-do/mountain-biking/eagle-island-state-park/" target="_blank">eagle-island</a>
+      </p>
+      <button class="close-modal">Close</button>
+    </dialog>      
+  </main>
+  <footer>
+    <p>WDD231 Class Project - Fiifi Debrah</p>
+    <p>&copy; <span id="year"></span> Chamber of Commerce</p>
+    <p id="modification"></p>
+  </footer>  
+</body>
+</html>
