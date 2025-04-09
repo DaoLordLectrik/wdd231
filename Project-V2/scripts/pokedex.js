@@ -68,7 +68,7 @@ async function searchPokemon(query) {
     if (!query) return;
     
     const searchResults = document.getElementById('searchResults');
-    searchResults.innerHTML = '<div class="loading"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Loading..." class="spinning"><p>Searching...</p></div>';
+    searchResults.innerHTML = '<div class="loading"><img src="images/poke-ball.webp" alt="Loading..." class="spinning"><p>Searching...</p></div>';
     
     try {
         // Try to fetch directly by name or ID
@@ -115,7 +115,7 @@ function displaySearchResults(pokemonList) {
         card.className = 'pokemon-card';
         card.dataset.id = pokemon.id;
         
-        const sprite = pokemon.sprites.front_default || 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png';
+        const sprite = pokemon.sprites.front_default || 'images/poke-ball.webp';
         
         let typesHTML = '';
         pokemon.types.forEach(type => {
@@ -153,7 +153,7 @@ function addPokemonToTeam(pokemon) {
     currentTeam.push({
         id: pokemon.id,
         name: pokemon.name,
-        sprite: pokemon.sprites.front_default || 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png',
+        sprite: pokemon.sprites.front_default || 'images/poke-ball.webp',
         types: pokemon.types.map(t => t.type.name),
         stats: pokemon.stats.reduce((acc, stat) => {
             acc[stat.stat.name] = stat.base_stat;
@@ -235,7 +235,7 @@ async function analyzeTeam() {
     const weaknessChart = document.getElementById('weaknessChart');
     
     teamAnalysis.classList.remove('hidden');
-    typeCoverageChart.innerHTML = '<div class="loading"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Loading..." class="spinning"><p>Analyzing...</p></div>';
+    typeCoverageChart.innerHTML = '<div class="loading"><img src="images/poke-ball.webp" alt="Loading..." class="spinning"><p>Analyzing...</p></div>';
     weaknessChart.innerHTML = '';
     
     try {

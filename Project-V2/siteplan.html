@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Fiifi Debrah">
+    <title>PokeSquad Builder - Site Plan</title>
+    <link rel="stylesheet" href="styles/siteplan-style.css">
+    <link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+    <header>
+        <h1>PokeSquad Builder</h1>
+        <p>Site Plan Documentation</p>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>1. Site Name & Branding</h2>
+            <p><strong>Name:</strong> <span class="weakness-warning">PokeSquad Builder</span></p>
+            <p><strong>Why?</strong></p>
+            <ul>
+                <li><strong>"Poke"</strong> instantly signals Pokémon content.</li>
+                <li><strong>"Squad"</strong> implies team-building (friendly, competitive vibe).</li>
+                <li><strong>"Builder"</strong> clarifies functionality (not just a database).</li>
+                <li>Short, memorable, and SEO-friendly for Pokémon fans.</li>
+            </ul>
+            <p><strong>Logo:</strong></p>
+            <div>
+                <img src="images/logo.webp">
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>2. Site Purpose</h2>
+            <p><strong>What It Does:</strong></p>
+            <ul>
+                <li>Helps Pokémon trainers <strong>build balanced teams</strong> for competitive battles.</li>
+                <li>Fetches real-time Pokémon <strong>stats, moves, and type data</strong> from PokéAPI.</li>
+                <li>Provides <strong>instant feedback</strong> on team weaknesses/strengths.</li>
+                <li>Lets users <strong>save/share teams</strong> for collaboration.</li>
+            </ul>
+            <p><strong>Target Audience:</strong></p>
+            <ul>
+                <li>Competitive Pokémon players (VGC, Smogon tiers).</li>
+                <li>Casual fans planning in-game teams.</li>
+                <li>Content creators sharing strategies.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>3. User Scenarios</h2>            
+            <h3>Scenario 1: Competitive Player</h3>
+            <p><em>"I need a Fire-type Pokémon for my team, but I don't want to double up on weaknesses. Can PokeSquad Builder show me which Fire-types cover my team's gaps?"</em></p>
+            <p><strong>Content Solution:</strong></p>
+            <ul>
+                <li><strong>Type-coverage calculator</strong> highlighting team vulnerabilities.</li>
+                <li>Filter Fire-types by secondary typing (e.g., Charizard's Flying resists Ground).</li>
+            </ul>
+            
+            <h3>Scenario 2: Casual Fan</h3>
+            <p><em>"I'm playing Pokémon Scarlet and want a balanced story-mode team. How do I know if my squad is well-rounded?"</em></p>
+            <p><strong>Content Solution:</strong></p>
+            <ul>
+                <li><strong>Pre-built "Beginner's Guide" templates</strong> (e.g., "Story Mode Balanced Team").</li>
+                <li>Simple <strong>color-coded weakness chart</strong> (red = critical gap).</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>4. Color Schema</h2>
+            
+            <div class="color-schema">
+                <div class="color-box" style="background-color: #FFCB05;">
+                    Electric Yellow<br>#FFCB05
+                </div>
+                <div class="color-box" style="background-color: #FF0000;">
+                    Poké Ball Red<br>#FF0000
+                </div>
+                <div class="color-box" style="background-color: #2A4B8D; color: white;">
+                    Navy Blue<br>#2A4B8D
+                </div>
+                <div class="color-box" style="background-color: #FFFFFF; color: #333; border: 1px solid #ddd;">
+                    Pure White<br>#FFFFFF
+                </div>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Color</th>
+                    <th>Hex</th>
+                    <th>Usage Example</th>
+                </tr>
+                <tr>
+                    <td>Electric Yellow</td>
+                    <td>#FFCB05</td>
+                    <td>Headers, buttons, highlights</td>
+                </tr>
+                <tr>
+                    <td>Poké Ball Red</td>
+                    <td>#FF0000</td>
+                    <td>Warnings (weaknesses), CTA accents</td>
+                </tr>
+                <tr>
+                    <td>Navy Blue</td>
+                    <td>#2A4B8D</td>
+                    <td>Background, footer, text headings</td>
+                </tr>
+                <tr>
+                    <td>Pure White</td>
+                    <td>#FFFFFF</td>
+                    <td>Card backgrounds, body text</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>5. Typography</h2>            
+            <table>
+                <tr>
+                    <th>Font</th>
+                    <th>Category</th>
+                    <th>Usage</th>
+                </tr>
+                <tr>
+                    <td>"Press Start 2P"</td>
+                    <td>Headings</td>
+                    <td>Game-like pixel font for titles</td>
+                </tr>
+                <tr>
+                    <td>"Lato"</td>
+                    <td>Body</td>
+                    <td>Clean, modern readability</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>6. Wireframe</h2>
+            <img src="images/wireframe.png" width="50%">
+        </section>
+    </div>
+
+    <footer>
+        <p>© <span id="year"></span> PokeSquad Builder Site Plan | Fiifi Debrah, WDD 231</p>
+        <p id="modification"></p>
+        <script>
+            // Display current year
+            const currentYear = new Date().getFullYear();
+            document.getElementById("year").innerHTML = currentYear;
+            
+            // Display last modified date
+            const lastModified = document.lastModified;
+            document.getElementById("modification").textContent = `Last Modified: ${lastModified}`;
+        </script>
+    </footer>
+</body>
+</html>
