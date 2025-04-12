@@ -1,5 +1,6 @@
+import attractions from "data/attractions.json";
+
 const attractionsContainer = document.querySelector("#attraction-cards");
-const url = "../data/attractions.json";
 
 const displayAttractions = (attractions) => {
   attractions.forEach(attraction => {
@@ -50,13 +51,7 @@ const displayAttractions = (attractions) => {
   });
 };
 
-async function getAttractions() {
-  const response = await fetch(url);
-  const data = await response.json();
-  displayAttractions(data);
-}
-
-getAttractions();
+displayAttractions(attractions);
 
 const timestampInput = document.getElementById("timestamp");
 if (timestampInput) {

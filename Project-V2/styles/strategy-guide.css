@@ -1,0 +1,678 @@
+/**
+ * Strategy Guide Styles
+ */
+
+/* Layout & Container Styles */
+.strategy-guide-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #2a75bb;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.page-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #ffcb05;
+    border-radius: 2px;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 1rem auto 0;
+}
+
+section {
+    margin-bottom: 3rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+section h2 {
+    color: #3c5aa6;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffcb05;
+    border-radius: 2px;
+}
+
+/* Guide Navigation */
+.guide-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.search-filter {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+}
+
+.search-container {
+    display: flex;
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px 0 0 8px;
+    font-size: 1rem;
+}
+
+.search-container button {
+    background: #3c5aa6;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-container button:hover {
+    background: #2a75bb;
+}
+
+.filter-container select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+    color: #333;
+    width: 180px;
+}
+
+.view-toggle {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.view-toggle button {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.view-toggle button.active {
+    background: #3c5aa6;
+    color: white;
+    border-color: #3c5aa6;
+}
+
+/* Guides Container */
+.guides-container {
+    margin-bottom: 2rem;
+}
+
+.guides-container.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.guides-container.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.guide-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.guide-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.guides-container.grid-view .guide-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.guides-container.list-view .guide-card {
+    display: flex;
+    height: 140px;
+}
+
+.guide-image {
+    position: relative;
+}
+
+.guides-container.grid-view .guide-image {
+    height: 160px;
+}
+
+.guides-container.list-view .guide-image {
+    width: 140px;
+    min-width: 140px;
+}
+
+.guide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.guide-category {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(60, 90, 166, 0.85);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.guide-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.guide-info h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.guide-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.guide-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    background: #f0f0f0;
+    color: #666;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.guide-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.guide-difficulty {
+    display: flex;
+    align-items: center;
+}
+
+.difficulty-dots {
+    display: flex;
+    margin-left: 0.5rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 3px;
+    background: #ddd;
+}
+
+.dot.active {
+    background: #3c5aa6;
+}
+
+.guide-card .btn {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+/* Guide Detail */
+.guide-detail {
+    display: none;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #3c5aa6;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.back-button:hover {
+    opacity: 0.8;
+}
+
+.guide-content {
+    line-height: 1.6;
+}
+
+.guide-content h2 {
+    color: #2a75bb;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.guide-content img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.guide-content p {
+    margin-bottom: 1rem;
+}
+
+.guide-content h3 {
+    color: #3c5aa6;
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem;
+}
+
+.guide-content ul, .guide-content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.guide-content li {
+    margin-bottom: 0.5rem;
+}
+
+.guide-content .tip-box {
+    background: #f0f7ff;
+    border-left: 4px solid #3c5aa6;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.guide-content .warning-box {
+    background: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Featured Strategy */
+.featured-card {
+    display: flex;
+    overflow: hidden;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f0fe 100%);
+}
+
+.featured-image {
+    width: 40%;
+    min-width: 200px;
+    background: radial-gradient(circle, #ffcb05 0%, #ffcb05 60%, transparent 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.featured-image img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
+}
+
+.featured-card:hover .featured-image img {
+    transform: scale(1.2);
+}
+
+.featured-content {
+    padding: 2rem;
+    flex: 1;
+}
+
+.featured-content h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.featured-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.featured-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+/* Weekly Tips */
+.tip-carousel {
+    position: relative;
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.tip-slide {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.tip-slide.active {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tip-icon {
+    background: #ffcb05;
+    color: #333;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(255, 203, 5, 0.3);
+}
+
+.tip-content h4 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.tip-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.carousel-controls button {
+    background: #e0e0e0;
+    color: #555;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.carousel-controls button:hover {
+    background: #3c5aa6;
+    color: white;
+}
+
+.carousel-indicators {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.indicator.active {
+    background: #3c5aa6;
+    transform: scale(1.2);
+}
+
+/* Type Matchup Tool */
+.type-calculator {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.calc-section {
+    background: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.calc-section h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.helper-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.type-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.5rem;
+}
+
+.type-button {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: capitalize;
+}
+
+.type-button.selected {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.effectiveness-display {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.effectiveness-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1rem 0;
+}
+
+.effectiveness-text {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.super-effective {
+    color: #4caf50;
+}
+
+.normal-effective {
+    color: #3c5aa6;
+}
+
+.not-very-effective {
+    color: #ff9800;
+}
+
+.no-effect {
+    color: #e53e3e;
+}
+
+/* Quiz Section */
+.quiz-container {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.quiz-intro {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.quiz-intro h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.quiz-intro p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.quiz-questions {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.question-counter {
+    text-align: center;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.question-text {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.answer-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.answer-option {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.answer-option:hover {
+    border-color: #3c5aa6;
+    transform: translateY(-2px);
+}
