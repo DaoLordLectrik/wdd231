@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PokeSquad Builder - Type Analysis: Learn about Pokémon type strengths and weaknesses">
+    <meta name="author" content="Fiifi Debrah">
+    <title>PokeSquad Builder | Type Analysis</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/type-analysis.css">
+    <link rel="stylesheet" href="styles/mobile.css" media="(max-width: 768px)">
+    <link rel="icon" href="images/favicon.ico">
+    <meta property="og:title" content="PokeSquad Builder - Type Analysis: Learn about Pokémon type strengths and weaknesses">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://daolordlectrik.github.io/wdd231/project-V2/images/logo.webp">
+    <meta property="og:url" content="https://daolordlectrik.github.io/wdd231/project-V2/type-analysis">
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/type-analysis.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>PokeSquad Builder</h1>
+    </header>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="images/logo.webp" alt="PokeSquad Logo" class="logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="type-analysis.html" class="active">Type Analysis</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <img src="images/poke-ball.webp" alt="Menu">
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="type-analysis-intro">
+            <div class="intro-content">
+                <h2>Pokémon Type Analysis</h2>
+                <p>Understand type advantages and disadvantages to build a balanced team. Select up to two types to see strengths and weaknesses.</p>
+            </div>
+            <div class="intro-image">
+                <img src="images/normal-gem.webp" alt="Type Analysis" class="floating">
+            </div>
+        </section>
+
+        <section class="type-selector">
+            <h3>Select Pokémon Type(s)</h3>
+            <div class="type-selection-container">
+                <div class="type-select-group">
+                    <label for="primaryType">Primary Type:</label>
+                    <select id="primaryType">
+                        <option value="">Select Primary Type</option>
+                        <!-- Types will be populated by JavaScript -->
+                    </select>
+                </div>
+                <div class="type-select-group">
+                    <label for="secondaryType">Secondary Type (Optional):</label>
+                    <select id="secondaryType">
+                        <option value="">None</option>
+                        <!-- Types will be populated by JavaScript -->
+                    </select>
+                </div>
+                <button id="analyzeTypes" class="btn btn-primary">Analyze Types</button>
+            </div>
+        </section>
+
+        <section id="typeAnalysisResults" class="type-analysis-results hidden">
+            <div class="selected-types">
+                <h3>Analysis for: <span id="analysisTypeDisplay"></span></h3>
+            </div>
+
+            <div class="analysis-container">
+                <div class="analysis-card">
+                    <h4 class="analysis-title strengths-title">Super Effective Against (2x damage)</h4>
+                    <div id="superEffective" class="type-badges-container"></div>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4 class="analysis-title weaknesses-title">Weak To (2x damage taken)</h4>
+                    <div id="weakTo" class="type-badges-container"></div>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4 class="analysis-title resistances-title">Resistant To (0.5x damage taken)</h4>
+                    <div id="resistantTo" class="type-badges-container"></div>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4 class="analysis-title not-effective-title">Not Very Effective Against (0.5x damage)</h4>
+                    <div id="notEffective" class="type-badges-container"></div>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4 class="analysis-title immune-title">Immune To (0x damage taken)</h4>
+                    <div id="immuneTo" class="type-badges-container"></div>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4 class="analysis-title no-effect-title">No Effect Against (0x damage)</h4>
+                    <div id="noEffect" class="type-badges-container"></div>
+                </div>
+            </div>
+
+            <div class="type-matchup-summary">
+                <h4>Type Matchup Score</h4>
+                <div class="matchup-score-container">
+                    <div class="matchup-score-card offensive">
+                        <h5>Offensive Coverage</h5>
+                        <div class="score-meter">
+                            <div id="offensiveScore" class="score-value">0</div>
+                            <div class="score-label">Coverage Score</div>
+                        </div>
+                    </div>
+                    <div class="matchup-score-card defensive">
+                        <h5>Defensive Resilience</h5>
+                        <div class="score-meter">
+                            <div id="defensiveScore" class="score-value">0</div>
+                            <div class="score-label">Resilience Score</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="score-explanation">
+                    <p id="scoreExplanation">Select types above to see analysis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="type-chart">
+            <h3>Type Chart Reference</h3>
+            <div class="chart-description">
+                <p>Click a type below to quickly view its strengths and weaknesses:</p>
+            </div>
+            <div id="typeButtonGrid" class="type-button-grid">
+                <!-- Type buttons will be populated by JavaScript -->
+            </div>
+            <div class="chart-legend">
+                <div class="legend-item">
+                    <span class="legend-color super-effective"></span>
+                    <span class="legend-text">Super Effective (2x)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color not-very-effective"></span>
+                    <span class="legend-text">Not Very Effective (0.5x)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color no-effect"></span>
+                    <span class="legend-text">No Effect (0x)</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="type-recommendation">
+            <h3>Popular Type Combinations</h3>
+            <div class="type-combo-cards">
+                <div class="type-combo-card">
+                    <h4>Steel + Fairy</h4>
+                    <div class="type-combo-badges">
+                        <span class="type-badge type-steel">Steel</span>
+                        <span class="type-badge type-fairy">Fairy</span>
+                    </div>
+                    <p>Resists 10 types with 3 immunities</p>
+                    <button class="btn btn-secondary load-combo" data-primary="steel" data-secondary="fairy">Analyze</button>
+                </div>
+                <div class="type-combo-card">
+                    <h4>Fire + Ground</h4>
+                    <div class="type-combo-badges">
+                        <span class="type-badge type-fire">Fire</span>
+                        <span class="type-badge type-ground">Ground</span>
+                    </div>
+                    <p>Excellent offensive coverage</p>
+                    <button class="btn btn-secondary load-combo" data-primary="fire" data-secondary="ground">Analyze</button>
+                </div>
+                <div class="type-combo-card">
+                    <h4>Water + Electric</h4>
+                    <div class="type-combo-badges">
+                        <span class="type-badge type-water">Water</span>
+                        <span class="type-badge type-electric">Electric</span>
+                    </div>
+                    <p>Neutralizes water's electric weakness</p>
+                    <button class="btn btn-secondary load-combo" data-primary="water" data-secondary="electric">Analyze</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="year"></span> PokeSquad Builder | Fiifi Debrah 🇬🇭, WDD 231</p>
+        <p id="modification">Last Updated: <span id="lastModified"></span></p>
+    </footer>
+</body>
+</html>

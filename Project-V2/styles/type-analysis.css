@@ -1,0 +1,272 @@
+/* Type Analysis Page Styles */
+
+/* ===== Type Analysis Intro ===== */
+.type-analysis-intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #2A4B8D 0%, #3A6BD0 100%);
+    border-radius: 1rem;
+    overflow: hidden;
+    padding: 3rem;
+    color: var(--text-white);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.intro-content {
+    flex: 2;
+}
+
+.intro-content h2 {
+    color: var(--primary-yellow);
+    border: none;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.intro-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    max-width: 90%;
+}
+
+.intro-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-image img {
+    max-width: 150px;
+}
+
+/* ===== Type Selector ===== */
+.type-selector {
+    background-color: var(--text-white);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.type-selection-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.type-select-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.type-select-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.type-select-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--medium-gray);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background-color: var(--light-gray);
+}
+
+/* ===== Analysis Results ===== */
+.type-analysis-results {
+    background-color: var(--light-gray);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.selected-types {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.analysis-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.analysis-card {
+    background-color: var(--text-white);
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.analysis-title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--medium-gray);
+}
+
+.strengths-title {
+    color: var(--type-fighting);
+    border-color: var(--type-fighting);
+}
+
+.weaknesses-title {
+    color: var(--type-fire);
+    border-color: var(--type-fire);
+}
+
+.resistances-title {
+    color: var(--type-rock);
+    border-color: var(--type-rock);
+}
+
+.not-effective-title {
+    color: var(--type-steel);
+    border-color: var(--type-steel);
+}
+
+.immune-title {
+    color: var(--type-ghost);
+    border-color: var(--type-ghost);
+}
+
+.no-effect-title {
+    color: var(--type-dark);
+    border-color: var(--type-dark);
+}
+
+.type-badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-message {
+    color: var(--dark-gray);
+    font-style: italic;
+    margin: 0;
+}
+
+/* ===== Type Matchup Score ===== */
+.type-matchup-summary {
+    background-color: var(--text-white);
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.type-matchup-summary h4 {
+    margin-bottom: 1.5rem;
+    color: var(--dark-blue);
+}
+
+.matchup-score-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.matchup-score-card {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    padding: 1rem;
+    border-radius: 0.8rem;
+}
+
+.matchup-score-card.offensive {
+    background-color: rgba(var(--type-fighting), 0.1);
+}
+
+.matchup-score-card.defensive {
+    background-color: rgba(var(--type-steel), 0.1);
+}
+
+.matchup-score-card h5 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.score-meter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.score-value {
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.high-score {
+    color: #4CAF50; /* Green */
+}
+
+.medium-score {
+    color: #2196F3; /* Blue */
+}
+
+.low-score {
+    color: #FFC107; /* Amber */
+}
+
+.negative-score {
+    color: #F44336; /* Red */
+}
+
+.score-label {
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+}
+
+.score-explanation {
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+/* ===== Type Chart ===== */
+.type-chart {
+    background-color: var(--text-white);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.chart-description {
+    margin-bottom: 1.5rem;
+}
+
+.type-button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.type-button {
+    padding: 0.8rem 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--text-white);
+}
