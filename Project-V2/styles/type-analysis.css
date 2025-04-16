@@ -1,5 +1,4 @@
-/* Type Analysis Page Styles */
-
+/* Type Analysis Page Specific Styles */
 /* ===== Type Analysis Intro ===== */
 .type-analysis-intro {
     display: flex;
@@ -42,7 +41,7 @@
     max-width: 150px;
 }
 
-/* ===== Type Selector ===== */
+/* Type Selection Section */
 .type-selector {
     background-color: var(--text-white);
     border-radius: 1rem;
@@ -54,219 +53,329 @@
 .type-selection-container {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-end;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: 2rem;
 }
 
-.type-select-group {
+.primary-type, .secondary-type {
     flex: 1;
-    min-width: 200px;
+    min-width: 300px;
 }
 
-.type-select-group label {
-    display: block;
-    margin-bottom: 0.5rem;
+.type-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.type-button {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: none;
+    color: var(--text-white);
     font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    text-transform: capitalize;
 }
 
-.type-select-group select {
-    width: 100%;
-    padding: 0.8rem;
-    border: 2px solid var(--medium-gray);
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    background-color: var(--light-gray);
+.type-button:hover {
+    transform: translateY(-2px);
 }
 
-/* ===== Analysis Results ===== */
-.type-analysis-results {
-    background-color: var(--light-gray);
+.type-button.active {
+    box-shadow: 0 0 0 3px var(--primary-yellow);
+    opacity: 1;
+}
+
+/* Type color buttons */
+.type-normal { background-color: var(--type-normal); }
+.type-fire { background-color: var(--type-fire); }
+.type-water { background-color: var(--type-water); }
+.type-electric { background-color: var(--type-electric); }
+.type-grass { background-color: var(--type-grass); }
+.type-ice { background-color: var(--type-ice); }
+.type-fighting { background-color: var(--type-fighting); }
+.type-poison { background-color: var(--type-poison); }
+.type-ground { background-color: var(--type-ground); }
+.type-flying { background-color: var(--type-flying); }
+.type-psychic { background-color: var(--type-psychic); }
+.type-bug { background-color: var(--type-bug); }
+.type-rock { background-color: var(--type-rock); }
+.type-ghost { background-color: var(--type-ghost); }
+.type-dragon { background-color: var(--type-dragon); }
+.type-dark { background-color: var(--type-dark); }
+.type-steel { background-color: var(--type-steel); }
+.type-fairy { background-color: var(--type-fairy); }
+.type-none { 
+    background-color: var(--medium-gray); 
+    color: var(--dark-gray);
+}
+
+/* Type Analysis Results */
+.type-results {
+    background-color: var(--text-white);
     border-radius: 1rem;
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.selected-types {
-    margin-bottom: 1.5rem;
+.type-header-result {
     text-align: center;
+    margin-bottom: 1.5rem;
 }
 
-.analysis-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.result-grid {
+    display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
     margin-bottom: 2rem;
 }
 
-.analysis-card {
-    background-color: var(--text-white);
-    border-radius: 0.8rem;
-    padding: 1.5rem;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-}
-
-.analysis-title {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    text-align: center;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--medium-gray);
-}
-
-.strengths-title {
-    color: var(--type-fighting);
-    border-color: var(--type-fighting);
-}
-
-.weaknesses-title {
-    color: var(--type-fire);
-    border-color: var(--type-fire);
-}
-
-.resistances-title {
-    color: var(--type-rock);
-    border-color: var(--type-rock);
-}
-
-.not-effective-title {
-    color: var(--type-steel);
-    border-color: var(--type-steel);
-}
-
-.immune-title {
-    color: var(--type-ghost);
-    border-color: var(--type-ghost);
-}
-
-.no-effect-title {
-    color: var(--type-dark);
-    border-color: var(--type-dark);
-}
-
-.type-badges-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    min-height: 40px;
-    align-items: center;
-    justify-content: center;
-}
-
-.empty-message {
-    color: var(--dark-gray);
-    font-style: italic;
-    margin: 0;
-}
-
-/* ===== Type Matchup Score ===== */
-.type-matchup-summary {
-    background-color: var(--text-white);
-    border-radius: 0.8rem;
-    padding: 1.5rem;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-    text-align: center;
-}
-
-.type-matchup-summary h4 {
-    margin-bottom: 1.5rem;
-    color: var(--dark-blue);
-}
-
-.matchup-score-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1.5rem;
-}
-
-.matchup-score-card {
+.result-column {
     flex: 1;
-    min-width: 200px;
-    max-width: 300px;
-    padding: 1rem;
-    border-radius: 0.8rem;
-}
-
-.matchup-score-card.offensive {
-    background-color: rgba(var(--type-fighting), 0.1);
-}
-
-.matchup-score-card.defensive {
-    background-color: rgba(var(--type-steel), 0.1);
-}
-
-.matchup-score-card h5 {
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.score-meter {
+    min-width: 250px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 1.5rem;
+}
+
+.result-card {
+    background-color: var(--light-gray);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    height: 100%;
+}
+
+.result-card h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.type-badges {
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
+    justify-content: center;
 }
 
-.score-value {
-    font-size: 3rem;
-    font-weight: bold;
-    font-family: 'Press Start 2P', cursive;
+.type-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    color: var(--text-white);
+    font-size: 0.8rem;
+    text-transform: capitalize;
 }
 
-.high-score {
-    color: #4CAF50; /* Green */
-}
-
-.medium-score {
-    color: #2196F3; /* Blue */
-}
-
-.low-score {
-    color: #FFC107; /* Amber */
-}
-
-.negative-score {
-    color: #F44336; /* Red */
-}
-
-.score-label {
-    font-size: 0.9rem;
+.empty-result {
     color: var(--dark-gray);
-}
-
-.score-explanation {
+    text-align: center;
     font-style: italic;
-    margin-top: 1rem;
 }
 
-/* ===== Type Chart ===== */
+/* Example Pokémon */
+.example-pokemon {
+    margin-top: 2rem;
+}
+
+.example-pokemon h4 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.pokemon-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.example-card {
+    background-color: var(--light-gray);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    width: 120px;
+}
+
+.example-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.example-name {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+/* Type Chart */
 .type-chart {
     background-color: var(--text-white);
     border-radius: 1rem;
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.type-chart h3 {
     text-align: center;
-}
-
-.chart-description {
     margin-bottom: 1.5rem;
 }
 
-.type-button-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 0.8rem;
-    margin-bottom: 1.5rem;
+.type-chart-container {
+    overflow-x: auto;
 }
 
-.type-button {
-    padding: 0.8rem 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    color: var(--text-white);
+.type-chart-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    min-width: 600px;
+}
+
+/* Type Chart Table Styles */
+.type-chart-table th, 
+.type-chart-table td {
+    padding: 0.5rem;
+    border: 1px solid var(--light-gray);
+    font-size: 0.85rem;
+}
+
+.type-chart-table th {
+    background-color: var(--light-gray);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.type-chart-table tr th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 20;
+    min-width: 100px;
+}
+
+.type-chart-table thead th {
+    background-color: var(--medium-gray);
+    color: var(--text-dark);
+}
+
+/* Type effectiveness colors */
+.super-effective {
+    background-color: #cdf0c9;
+    color: #246720;
+    font-weight: bold;
+}
+
+.not-very-effective {
+    background-color: #ffd1d1;
+    color: #9e2929;
+}
+
+.no-effect {
+    background-color: #d9d9d9;
+    color: #606060;
+}
+
+/* Loading animation */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.spinning {
+    width: 60px;
+    height: 60px;
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 992px) {
+    .result-grid {
+        flex-direction: column;
+    }
+    
+    .result-column {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .type-selector,
+    .type-results,
+    .type-chart {
+        padding: 1.5rem;
+    }
+    
+    .type-selection-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .primary-type, 
+    .secondary-type {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .example-card {
+        width: 100px;
+    }
+    
+    .example-card img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .type-chart-table th, 
+    .type-chart-table td {
+        padding: 0.3rem;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .type-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .result-card {
+        padding: 0.8rem;
+    }
+    
+    .type-badge {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.75rem;
+    }
+    
+    .example-card {
+        width: 90px;
+    }
+    
+    .example-card img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .example-name {
+        font-size: 0.7rem;
+    }
 }
