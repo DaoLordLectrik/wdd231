@@ -105,13 +105,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Add to team button
-    if (addToTeamButton) {
-        addToTeamButton.addEventListener('click', function() {
-            const pokemonId = this.getAttribute('data-pokemon-id');
-            addPokemonToTeam(pokemonId);
-        });
-    }
+    // Global event delegation for addToTeam button clicks
+    document.body.addEventListener('click', function(event) {
+        if (event.target.id === 'addToTeam') {
+            const pokemonId = event.target.getAttribute('data-pokemon-id');
+            if (pokemonId) {
+                addPokemonToTeam(pokemonId);
+            }
+        }
+    });
 });
 
 // Initialize Pokedex
@@ -127,7 +129,8 @@ async function initializePokedex() {
         totalPokemon = data.count;
         allPokemon = data.results.map((pokemon, index) => {
             // Extract ID from URL
-            const id = index + 1;
+            const urlParts = pokemon.url.split('/');
+            const id = parseInt(urlParts[urlParts.length - 2]);
             return {
                 id: id,
                 name: pokemon.name,
@@ -140,12 +143,6 @@ async function initializePokedex() {
         
         // Display first page
         displayPokemonList();
-        
-        // Load type filter options
-        loadTypeOptions();
-        
-        // Load generation filter options
-        loadGenerationOptions();
         
     } catch (error) {
         console.error('Error initializing Pokedex:', error);
@@ -168,40 +165,49 @@ async function applyFilters() {
         // Apply name search filter
         if (currentFilters.search) {
             filteredPokemon = filteredPokemon.filter(pokemon => 
-                pokemon.name.includes(currentFilters.search)
+                pokemon.name.includes(currentFilters.search) || 
+                pokemon.id.toString() === currentFilters.search
             );
         }
         
         // Apply type filter
         if (currentFilters.type) {
-            const typeResponse = await fetch(`${API_URL}/type/${currentFilters.type}`);
-            const typeData = await typeResponse.json();
-            
-            const typeFilteredPokemon = typeData.pokemon.map(p => {
-                // Extract ID from URL
-                const urlParts = p.pokemon.url.split('/');
-                const id = parseInt(urlParts[urlParts.length - 2]);
-                return id;
-            });
-            
-            filteredPokemon = filteredPokemon.filter(pokemon => 
-                typeFilteredPokemon.includes(pokemon.id)
-            );
+            try {
+                const typeResponse = await fetch(`${API_URL}/type/${currentFilters.type}`);
+                const typeData = await typeResponse.json();
+                
+                const typeFilteredPokemon = typeData.pokemon.map(p => {
+                    // Extract ID from URL
+                    const urlParts = p.pokemon.url.split('/');
+                    const id = parseInt(urlParts[urlParts.length - 2]);
+                    return id;
+                });
+                
+                filteredPokemon = filteredPokemon.filter(pokemon => 
+                    typeFilteredPokemon.includes(pokemon.id)
+                );
+            } catch (typeError) {
+                console.error('Error filtering by type:', typeError);
+            }
         }
         
         // Apply generation filter
         if (currentFilters.generation) {
-            const genResponse = await fetch(`${API_URL}/generation/${currentFilters.generation}`);
-            const genData = await genResponse.json();
-            
-            const genPokemonSpecies = genData.pokemon_species.map(species => {
-                // Extract name from species
-                return species.name;
-            });
-            
-            filteredPokemon = filteredPokemon.filter(pokemon => 
-                genPokemonSpecies.includes(pokemon.name)
-            );
+            try {
+                const genResponse = await fetch(`${API_URL}/generation/${currentFilters.generation}`);
+                const genData = await genResponse.json();
+                
+                const genPokemonSpecies = genData.pokemon_species.map(species => {
+                    // Extract name from species
+                    return species.name;
+                });
+                
+                filteredPokemon = filteredPokemon.filter(pokemon => 
+                    genPokemonSpecies.includes(pokemon.name)
+                );
+            } catch (genError) {
+                console.error('Error filtering by generation:', genError);
+            }
         }
         
         // Reset to first page and display results
@@ -220,7 +226,7 @@ async function applyFilters() {
 // Display Pokemon list with pagination
 async function displayPokemonList() {
     const pokemonList = document.getElementById('pokemonList');
-    const paginationInfo = document.getElementById('paginationInfo');
+    const pageInfo = document.getElementById('pageInfo');
     const loadingIndicator = document.getElementById('loadingIndicator');
     const prevPageButton = document.getElementById('prevPage');
     const nextPageButton = document.getElementById('nextPage');
@@ -234,88 +240,110 @@ async function displayPokemonList() {
     const currentPagePokemon = filteredPokemon.slice(startIndex, endIndex);
     
     // Update pagination info
-    paginationInfo.textContent = `Showing ${startIndex + 1}-${endIndex} of ${filteredPokemon.length} Pokémon`;
+    if (pageInfo) {
+        pageInfo.textContent = `Page ${currentPage} (${startIndex + 1}-${endIndex} of ${filteredPokemon.length})`;
+    }
     
     // Update pagination buttons
-    prevPageButton.disabled = currentPage === 1;
-    nextPageButton.disabled = endIndex >= filteredPokemon.length;
+    if (prevPageButton) {
+        prevPageButton.disabled = currentPage === 1;
+    }
+    if (nextPageButton) {
+        nextPageButton.disabled = endIndex >= filteredPokemon.length;
+    }
     
     try {
+        // Create a fragment to avoid multiple DOM updates
+        const fragment = document.createDocumentFragment();
+        
         // Load pokemon details for current page
         for (const pokemon of currentPagePokemon) {
-            const response = await fetch(`${API_URL}/pokemon/${pokemon.id}`);
-            const pokemonData = await response.json();
-            
-            // Create Pokemon list item
-            const listItem = document.createElement('div');
-            listItem.className = viewMode === 'grid' ? 'pokemon-card pokemon-list-item' : 'pokemon-row pokemon-list-item';
-            listItem.dataset.id = pokemon.id;
-            
-            // Get sprite
-            const sprite = pokemonData.sprites.front_default || 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png';
-            
-            // Get types
-            let typesHTML = '';
-            pokemonData.types.forEach(type => {
-                typesHTML += `<span class="type-badge type-${type.type.name}">${type.type.name}</span>`;
-            });
-            
-            // Different layout for grid vs list view
-            if (viewMode === 'grid') {
-                listItem.innerHTML = `
-                    <img src="${sprite}" alt="${pokemon.name}" class="pokemon-image">
-                    <div class="pokemon-number">#${pokemon.id.toString().padStart(3, '0')}</div>
-                    <div class="pokemon-name">${formatPokemonName(pokemon.name)}</div>
-                    <div class="pokemon-types">${typesHTML}</div>
-                `;
-            } else {
-                listItem.innerHTML = `
-                    <div class="pokemon-row-info">
+            try {
+                const response = await fetch(`${API_URL}/pokemon/${pokemon.id}`);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch Pokemon #${pokemon.id}`);
+                }
+                const pokemonData = await response.json();
+                
+                // Create Pokemon list item
+                const listItem = document.createElement('div');
+                listItem.className = viewMode === 'grid' ? 'pokemon-card pokemon-list-item' : 'pokemon-row pokemon-list-item';
+                listItem.dataset.id = pokemon.id;
+                
+                // Get sprite (with fallback)
+                const sprite = pokemonData.sprites.front_default || 'images/poke-ball.webp';
+                
+                // Get types
+                let typesHTML = '';
+                pokemonData.types.forEach(type => {
+                    typesHTML += `<span class="type-badge type-${type.type.name}">${type.type.name}</span>`;
+                });
+                
+                // Different layout for grid vs list view
+                if (viewMode === 'grid') {
+                    listItem.innerHTML = `
                         <img src="${sprite}" alt="${pokemon.name}" class="pokemon-image">
-                        <div class="pokemon-info">
-                            <div class="pokemon-number">#${pokemon.id.toString().padStart(3, '0')}</div>
-                            <div class="pokemon-name">${formatPokemonName(pokemon.name)}</div>
-                            <div class="pokemon-types">${typesHTML}</div>
-                        </div>
-                    </div>
-                    <div class="pokemon-stats-preview">
-                        <div class="stat-bar">
-                            <span class="stat-name">HP</span>
-                            <div class="stat-bar-outer">
-                                <div class="stat-bar-inner" style="width: ${Math.min(100, pokemonData.stats[0].base_stat / 2)}%"></div>
+                        <div class="pokemon-number">#${pokemon.id.toString().padStart(3, '0')}</div>
+                        <div class="pokemon-name">${formatPokemonName(pokemon.name)}</div>
+                        <div class="pokemon-types">${typesHTML}</div>
+                    `;
+                } else {
+                    listItem.innerHTML = `
+                        <div class="pokemon-row-info">
+                            <img src="${sprite}" alt="${pokemon.name}" class="pokemon-image">
+                            <div class="pokemon-info">
+                                <div class="pokemon-number">#${pokemon.id.toString().padStart(3, '0')}</div>
+                                <div class="pokemon-name">${formatPokemonName(pokemon.name)}</div>
+                                <div class="pokemon-types">${typesHTML}</div>
                             </div>
-                            <span class="stat-value">${pokemonData.stats[0].base_stat}</span>
                         </div>
-                        <div class="stat-bar">
-                            <span class="stat-name">ATK</span>
-                            <div class="stat-bar-outer">
-                                <div class="stat-bar-inner" style="width: ${Math.min(100, pokemonData.stats[1].base_stat / 2)}%"></div>
+                        <div class="pokemon-stats-preview">
+                            <div class="stat-bar">
+                                <span class="stat-name">HP</span>
+                                <div class="stat-bar-outer">
+                                    <div class="stat-bar-inner" style="width: ${Math.min(100, pokemonData.stats[0].base_stat / 2)}%"></div>
+                                </div>
+                                <span class="stat-value">${pokemonData.stats[0].base_stat}</span>
                             </div>
-                            <span class="stat-value">${pokemonData.stats[1].base_stat}</span>
-                        </div>
-                        <div class="stat-bar">
-                            <span class="stat-name">DEF</span>
-                            <div class="stat-bar-outer">
-                                <div class="stat-bar-inner" style="width: ${Math.min(100, pokemonData.stats[2].base_stat / 2)}%"></div>
+                            <div class="stat-bar">
+                                <span class="stat-name">ATK</span>
+                                <div class="stat-bar-outer">
+                                    <div class="stat-bar-inner" style="width: ${Math.min(100, pokemonData.stats[1].base_stat / 2)}%"></div>
+                                </div>
+                                <span class="stat-value">${pokemonData.stats[1].base_stat}</span>
                             </div>
-                            <span class="stat-value">${pokemonData.stats[2].base_stat}</span>
+                            <div class="stat-bar">
+                                <span class="stat-name">DEF</span>
+                                <div class="stat-bar-outer">
+                                    <div class="stat-bar-inner" style="width: ${Math.min(100, pokemonData.stats[2].base_stat / 2)}%"></div>
+                                </div>
+                                <span class="stat-value">${pokemonData.stats[2].base_stat}</span>
+                            </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                }
+                
+                // Add click event to show details
+                listItem.addEventListener('click', function() {
+                    showPokemonDetails(pokemon.id);
+                });
+                
+                // Add to fragment
+                fragment.appendChild(listItem);
+                
+                // Apply animation class with reduced delay
+                setTimeout(() => {
+                    listItem.classList.add('animate');
+                }, 20 * fragment.children.length);
+                
+            } catch (pokemonError) {
+                console.error(`Error loading Pokemon #${pokemon.id}:`, pokemonError);
+                // Continue with the next Pokemon
             }
-            
-            // Add click event to show details
-            listItem.addEventListener('click', function() {
-                showPokemonDetails(pokemon.id);
-            });
-            
-            // Add animation class after a small delay for staggered effect
-            setTimeout(() => {
-                listItem.classList.add('animate');
-            }, 50 * (pokemonList.children.length));
-            
-            pokemonList.appendChild(listItem);
         }
+        
+        // Add all items to DOM at once
+        pokemonList.appendChild(fragment);
         
     } catch (error) {
         console.error('Error displaying Pokemon list:', error);
@@ -328,10 +356,16 @@ async function displayPokemonList() {
 // Show Pokemon details in modal
 async function showPokemonDetails(pokemonId) {
     const modal = document.getElementById('pokemonModal');
-    const modalContent = document.querySelector('.pokemon-details');
+    const modalContent = document.getElementById('modalContent');
+    
+    if (!modalContent) {
+        console.error('Modal content element not found');
+        return;
+    }
+    
     const loadingIndicator = document.createElement('div');
     loadingIndicator.className = 'loading';
-    loadingIndicator.innerHTML = '<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Loading..." class="spinning"><p>Loading details...</p>';
+    loadingIndicator.innerHTML = '<img src="images/poke-ball.webp" alt="Loading..." class="spinning"><p>Loading details...</p>';
     
     modalContent.innerHTML = '';
     modalContent.appendChild(loadingIndicator);
@@ -340,10 +374,16 @@ async function showPokemonDetails(pokemonId) {
     try {
         // Fetch Pokemon details
         const response = await fetch(`${API_URL}/pokemon/${pokemonId}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch Pokemon #${pokemonId}`);
+        }
         const pokemon = await response.json();
         
         // Fetch species details for description
         const speciesResponse = await fetch(pokemon.species.url);
+        if (!speciesResponse.ok) {
+            throw new Error(`Failed to fetch species data for Pokemon #${pokemonId}`);
+        }
         const species = await speciesResponse.json();
         
         // Find English description
@@ -403,10 +443,15 @@ async function showPokemonDetails(pokemonId) {
             movesHTML += `<div class="move-item">${formatPokemonName(move.move.name)}</div>`;
         });
         
+        // Get artwork with fallback
+        const artwork = pokemon.sprites.other['official-artwork']?.front_default || 
+                       pokemon.sprites.front_default || 
+                       'images/poke-ball.webp';
+        
         // Create modal content
         modalContent.innerHTML = `
             <div class="pokemon-detail-image">
-                <img src="${pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default}" alt="${pokemon.name}">
+                <img src="${artwork}" alt="${pokemon.name}">
             </div>
             <div class="pokemon-detail-info">
                 <h2 class="pokemon-detail-name">${formatPokemonName(pokemon.name)}</h2>
@@ -420,7 +465,7 @@ async function showPokemonDetails(pokemonId) {
                         <p><strong>Weight:</strong> ${pokemon.weight / 10} kg</p>
                     </div>
                     <div class="detail-group">
-                        <p><strong>Base Experience:</strong> ${pokemon.base_experience}</p>
+                        <p><strong>Base Experience:</strong> ${pokemon.base_experience || 'Unknown'}</p>
                         <p><strong>Generation:</strong> ${formatGeneration(species.generation.name)}</p>
                     </div>
                 </div>
@@ -439,72 +484,15 @@ async function showPokemonDetails(pokemonId) {
                 <div class="move-list">
                     ${movesHTML}
                 </div>
-                
-                <div class="modal-actions">
-                    <button class="btn btn-primary" id="addToTeam" data-pokemon-id="${pokemon.id}">Add to Team</button>
-                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="addToTeam" data-pokemon-id="${pokemon.id}">Add to Team</button>
             </div>
         `;
         
-        // Add event listener for Add to Team button
-        document.getElementById('addToTeam').addEventListener('click', function() {
-            addPokemonToTeam(pokemon.id);
-        });
-        
     } catch (error) {
         console.error('Error showing Pokemon details:', error);
-        modalContent.innerHTML = '<p>Error loading Pokémon details. Please try again.</p>';
-    }
-}
-
-// Load type filter options
-async function loadTypeOptions() {
-    const typeFilter = document.getElementById('typeFilter');
-    
-    try {
-        const response = await fetch(`${API_URL}/type`);
-        const data = await response.json();
-        
-        // Add default option
-        typeFilter.innerHTML = '<option value="">All Types</option>';
-        
-        // Add type options
-        data.results.forEach(type => {
-            // Skip 'unknown' and 'shadow' types
-            if (type.name !== 'unknown' && type.name !== 'shadow') {
-                const option = document.createElement('option');
-                option.value = type.name;
-                option.textContent = type.name.charAt(0).toUpperCase() + type.name.slice(1);
-                typeFilter.appendChild(option);
-            }
-        });
-        
-    } catch (error) {
-        console.error('Error loading type options:', error);
-    }
-}
-
-// Load generation filter options
-async function loadGenerationOptions() {
-    const generationFilter = document.getElementById('generationFilter');
-    
-    try {
-        const response = await fetch(`${API_URL}/generation`);
-        const data = await response.json();
-        
-        // Add default option
-        generationFilter.innerHTML = '<option value="">All Generations</option>';
-        
-        // Add generation options
-        data.results.forEach(gen => {
-            const option = document.createElement('option');
-            option.value = gen.name.split('-')[1]; // Extract generation number
-            option.textContent = formatGeneration(gen.name);
-            generationFilter.appendChild(option);
-        });
-        
-    } catch (error) {
-        console.error('Error loading generation options:', error);
+        modalContent.innerHTML = `<p>Error loading Pokémon details for #${pokemonId}. Please try again.</p>`;
     }
 }
 
@@ -517,7 +505,12 @@ function addPokemonToTeam(pokemonId) {
         const savedTeam = localStorage.getItem('pokeSquadTeam');
         
         if (savedTeam) {
-            team = JSON.parse(savedTeam);
+            try {
+                team = JSON.parse(savedTeam);
+            } catch (e) {
+                console.error('Error parsing saved team', e);
+                team = [];
+            }
         }
         
         // Check if team is full
@@ -535,12 +528,17 @@ function addPokemonToTeam(pokemonId) {
         
         // Add Pokemon ID to team for later processing
         fetch(`${API_URL}/pokemon/${pokemonId}`)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch Pokemon #${pokemonId}`);
+                }
+                return response.json();
+            })
             .then(pokemon => {
                 team.push({
                     id: pokemon.id,
                     name: pokemon.name,
-                    sprite: pokemon.sprites.front_default,
+                    sprite: pokemon.sprites.front_default || 'images/poke-ball.webp',
                     types: pokemon.types.map(t => t.type.name),
                     stats: pokemon.stats.reduce((acc, stat) => {
                         acc[stat.stat.name] = stat.base_stat;
@@ -568,8 +566,69 @@ function addPokemonToTeam(pokemonId) {
     }
 }
 
+// Load type filter options
+async function loadTypeOptions() {
+    const typeFilter = document.getElementById('typeFilter');
+    if (!typeFilter) return;
+    
+    try {
+        const response = await fetch(`${API_URL}/type`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch type data');
+        }
+        const data = await response.json();
+        
+        // Add default option
+        typeFilter.innerHTML = '<option value="">All Types</option>';
+        
+        // Add type options
+        data.results.forEach(type => {
+            // Skip 'unknown' and 'shadow' types
+            if (type.name !== 'unknown' && type.name !== 'shadow') {
+                const option = document.createElement('option');
+                option.value = type.name;
+                option.textContent = type.name.charAt(0).toUpperCase() + type.name.slice(1);
+                typeFilter.appendChild(option);
+            }
+        });
+        
+    } catch (error) {
+        console.error('Error loading type options:', error);
+    }
+}
+
+// Load generation filter options
+async function loadGenerationOptions() {
+    const generationFilter = document.getElementById('generationFilter');
+    if (!generationFilter) return;
+    
+    try {
+        const response = await fetch(`${API_URL}/generation`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch generation data');
+        }
+        const data = await response.json();
+        
+        // Add default option
+        generationFilter.innerHTML = '<option value="">All Generations</option>';
+        
+        // Add generation options
+        data.results.forEach(gen => {
+            const option = document.createElement('option');
+            option.value = gen.name.split('-')[1]; // Extract generation number
+            option.textContent = formatGeneration(gen.name);
+            generationFilter.appendChild(option);
+        });
+        
+    } catch (error) {
+        console.error('Error loading generation options:', error);
+        // Continue without generation filter
+    }
+}
+
 // Helper function to format Pokemon names
 function formatPokemonName(name) {
+    if (!name) return 'Unknown';
     // Capitalize and replace hyphens with spaces
     return name
         .split('-')
@@ -579,7 +638,9 @@ function formatPokemonName(name) {
 
 // Helper function to format generation names
 function formatGeneration(genName) {
+    if (!genName) return 'Unknown';
     const parts = genName.split('-');
+    if (parts.length < 2) return genName;
     const genNumber = parts[1];
     return `Generation ${genNumber.toUpperCase()}`;
 }
